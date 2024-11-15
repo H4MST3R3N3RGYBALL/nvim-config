@@ -1,21 +1,33 @@
 return {
-  -- LSP Configuration for Pyright
   {
-    "neovim/nvim-lspconfig",  -- LSP plugin
-    config = function()
-      -- Setup Pyright LSP with type checking disabled
-      require("lspconfig").pyright.setup({
-        settings = {
-          python = {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        basedpyright = { -- Pyright but based, manually install from PyPI
+          settings = {
+            basedpyright = {
             analysis = {
-              typeCheckingMode = "off",  -- Disable all type checking
-              diagnosticMode = "openFilesOnly",  -- Optional: only show diagnostics for open files
-              autoSearchPaths = true,  -- Enable automatic searching for Python paths
-              useLibraryCodeForTypes = true,  -- Enable type information from libraries
+              typeCheckingMode = "off",
+              autoImportCompletions = true,
+              diagnosticSeverityOverrides = {
+                reportUnusedImport = "information",
+                reportUnusedFunction = "information",
+                reportUnusedVariable = "information",
+                reportGeneralTypeIssues = "none",
+                reportOptionalMemberAccess = "none",
+                reportOptionalSubscript = "none",
+                reportPrivateImportUsage = "none",
+              },
+            },
             },
           },
         },
-      })
-    end,
+        ruff_lsp = {
+          handlers = {
+            ["textDocument/publishDiagnostics"] = function() end, -- Disable diagnostics
+          },
+        },
+      },
+    },
   },
 }
