@@ -2,6 +2,7 @@
   "CopilotChat.nvim": { "branch": "canary", "commit": "85a1679837d2698273e98295a6ff4ba66477ea1c" },
   "LazyVim": { "branch": "main", "commit": "bb289f4345835d98df7d0dfd4a26fd0dffa7e89a" },
   "SchemaStore.nvim": { "branch": "main", "commit": "8ae7ed5b8a58ad36136d9b440205cef552bd0e41" },
+  "actions-preview": { "branch": "master", "commit": "9f52a01c374318e91337697ebed51c6fae57f8a4" },
   "aerial.nvim": { "branch": "master", "commit": "ddd25f57e5205b36bc2e939c486b47818bef9ec3" },
   "blink-cmp-copilot": { "branch": "main", "commit": "e3eedf36ceda1932e296ec894de4ceea8ddeacb6" },
   "blink.cmp": { "branch": "main", "commit": "75cadbcd2657ed01326ca2b0e5e4d78a77127ca3" },
