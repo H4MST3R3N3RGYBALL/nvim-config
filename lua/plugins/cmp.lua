@@ -71,6 +71,10 @@ return {
                         fallback()
                     end
                 end, { "i", "s" }),
+                ["<C-e>"] = cmp.mapping({
+                    i = cmp.mapping.abort(),
+                    c = cmp.mapping.close(),
+                }),
             })
             return opts
         end
