@@ -18,7 +18,10 @@ return {
       "chrisgrieser/cmp-nerdfont",
       "zbirenbaum/copilot-cmp",
       "hrsh7th/cmp-omni",
-      "hrsh7th/cmp-cmdline", -- Add cmdline source
+      "hrsh7th/cmp-cmdline",                   -- Add cmdline source
+      "hrsh7th/cmp-calc",                      -- Add calc source
+      "rcarriga/cmp-dap",                      -- Add DAP source
+      "nvim-treesitter/completion-treesitter", -- Add treesitter source
     },
     opts = function(_, opts)
       local has_words_before = function()
@@ -49,6 +52,9 @@ return {
         { name = "latex_symbols" },
         { name = "nerdfont" },
         { name = "omni" },
+        { name = "calc" },
+        { name = "dap" },
+        { name = "treesitter" },
       }
       opts.mapping = vim.tbl_extend("force", opts.mapping or {}, {
         ["<Up>"] = cmp.mapping.select_prev_item(),
@@ -82,6 +88,13 @@ return {
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
           { name = "buffer" },
+        },
+      })
+
+      -- Set up DAP completion
+      cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+        sources = {
+          { name = "dap" },
         },
       })
 
