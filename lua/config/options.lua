@@ -4,10 +4,10 @@
 vim.g.lazyvim_python_lsp = "basedpyright"
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "*",
-    callback = function(opts)
-        if vim.bo[opts.buf].omnifunc == "" then
-            vim.bo[opts.buf].omnifunc = "syntaxcomplete#Complete"
-        end
-    end,
+  pattern = "*",
+  callback = function(opts)
+    if vim.bo[opts.buf].omnifunc == "" then
+      vim.bo[opts.buf].omnifunc = "syntaxcomplete#Complete"
+    end
+  end,
 })

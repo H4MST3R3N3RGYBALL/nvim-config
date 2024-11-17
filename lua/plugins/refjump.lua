@@ -1,5 +1,5 @@
-return{
-  'mawkler/refjump.nvim',
-  keys = { ']r', '[r' }, -- Uncomment to lazy load
-  opts = {}
+return {
+  "mawkler/refjump.nvim",
+  keys = { "]r", "[r" }, -- Uncomment to lazy load
+  opts = {},
 }

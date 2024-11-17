@@ -1,5 +1,5 @@
 return {
-    "VidocqH/lsp-lens.nvim",
-    event = "LspAttach",
-    opts = {},
+  "VidocqH/lsp-lens.nvim",
+  event = "LspAttach",
+  opts = {},
 }

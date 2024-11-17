@@ -1,4 +1,4 @@
 return {
-    "bennypowers/nvim-regexplainer",
-    opts = {},
+  "bennypowers/nvim-regexplainer",
+  opts = {},
 }

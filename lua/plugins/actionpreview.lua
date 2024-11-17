@@ -1,21 +1,21 @@
 return {
-    "aznhe21/actions-preview.nvim",
-    name = "actions-preview",
-    keys = {
-        {
-            "<Leader>ca",
-            function()
-                require("actions-preview").code_actions()
-            end,
-            mode = { "n", "v" },
-            desc = "Preview code actions.",
-        },
+  "aznhe21/actions-preview.nvim",
+  name = "actions-preview",
+  keys = {
+    {
+      "<Leader>ca",
+      function()
+        require("actions-preview").code_actions()
+      end,
+      mode = { "n", "v" },
+      desc = "Preview code actions.",
     },
-    opts = function()
-        return {
-            highlight_command = {
-                require("actions-preview.highlight").delta(),
-            },
-        }
-    end,
+  },
+  opts = function()
+    return {
+      highlight_command = {
+        require("actions-preview.highlight").delta(),
+      },
+    }
+  end,
 }

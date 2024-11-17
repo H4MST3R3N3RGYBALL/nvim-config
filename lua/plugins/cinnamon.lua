@@ -1,9 +1,9 @@
 return {
-    "declancm/cinnamon.nvim",
-    opts = {
-        keymaps = {
-            basic = true,
-            extra = true,
-        },
+  "declancm/cinnamon.nvim",
+  opts = {
+    keymaps = {
+      basic = true,
+      extra = true,
     },
+  },
 }
