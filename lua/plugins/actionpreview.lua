@@ -1,6 +1,5 @@
 return {
   "aznhe21/actions-preview.nvim",
-  name = "actions-preview",
   keys = {
     {
       "<Leader>ca",

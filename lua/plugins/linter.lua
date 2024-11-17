@@ -1,15 +1,11 @@
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-  callback = function()
-    require("lint").try_lint()
-  end,
-})
-
 return {
   "mfussenegger/nvim-lint",
-  name = "lint",
   event = "BufWritePost",
+  enabled = true,
   config = function()
-    require("lint")["linters_by_ft"] = {
+    local lint = require("lint")
+
+    lint.linters_by_ft = {
       bash = { "bash", "shellcheck" },
       c = { "clangtidy" },
       cmake = { "cmakelint" },
@@ -35,5 +31,11 @@ return {
       yaml = { "yamllint" },
       zsh = { "zsh" },
     }
+
+    vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+      callback = function()
+        require("lint").try_lint()
+      end,
+    })
   end,
 }

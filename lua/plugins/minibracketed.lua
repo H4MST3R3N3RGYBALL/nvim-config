@@ -1,6 +1,5 @@
 return {
   "echasnovski/mini.bracketed",
-  name = "mini.bracketed",
   config = true,
   keys = {
     "[B",

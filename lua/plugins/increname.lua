@@ -1,6 +1,5 @@
 return {
   "smjonas/inc-rename.nvim",
-  name = "inc-rename",
   opts = {},
   keys = {
     {
