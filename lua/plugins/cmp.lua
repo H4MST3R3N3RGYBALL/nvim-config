@@ -18,6 +18,7 @@ return {
             "chrisgrieser/cmp-nerdfont",
             "zbirenbaum/copilot-cmp",
             "hrsh7th/cmp-omni",
+            "hrsh7th/cmp-cmdline", -- Add cmdline source
         },
         opts = function(_, opts)
             local has_words_before = function()
@@ -51,31 +52,40 @@ return {
                 { name = "omni" },
             }
             opts.mapping = vim.tbl_extend("force", opts.mapping or {}, {
-                ["<Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_next_item()
-                    elseif luasnip.expand_or_jumpable() then
-                        luasnip.expand_or_jump()
-                    elseif has_words_before() then
-                        cmp.complete()
-                    else
-                        fallback()
-                    end
-                end, { "i", "s" }),
-                ["<S-Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_prev_item()
-                    elseif luasnip.jumpable(-1) then
-                        luasnip.jump(-1)
-                    else
-                        fallback()
-                    end
-                end, { "i", "s" }),
+                ["<Up>"] = cmp.mapping.select_prev_item(),
+                ["<Down>"] = cmp.mapping.select_next_item(),
+                ["<Tab>"] = cmp.mapping.confirm({ select = true }),
+                ["<CR>"] = cmp.mapping({
+                    i = function(fallback)
+                        if cmp.visible() then
+                            cmp.abort()
+                        else
+                            fallback()
+                        end
+                    end,
+                }),
+                ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
                 ["<C-e>"] = cmp.mapping({
                     i = cmp.mapping.abort(),
                     c = cmp.mapping.close(),
                 }),
             })
+
+            -- Set up cmdline completion
+            cmp.setup.cmdline(':', {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = {
+                    { name = 'cmdline' }
+                }
+            })
+
+            cmp.setup.cmdline('/', {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = {
+                    { name = 'buffer' }
+                }
+            })
+
             return opts
         end
     }
