@@ -35,11 +35,10 @@ return {
           "hdl_checker",             -- SystemVerilog (optional)
           "lemminx",                 -- XML (optional)
           "yamlls",                  -- YAML (optional)
-          "harper_ls"
-
+          "harper_ls",               -- JSON (optional)
         },
         -- Optional: Enable automatic installation of LSP servers when they're needed
-        automatic_installation = false,
+        automatic_installation = true,
       })
     end,
   },
