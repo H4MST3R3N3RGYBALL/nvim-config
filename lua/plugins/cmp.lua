@@ -8,6 +8,10 @@ return {
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
+      "L3MON4D3/LuaSnip",             -- snippet engine
+      "saadparwaiz1/cmp_luasnip",     -- for autocompletion
+      "rafamadriz/friendly-snippets", -- useful snippets
+      "onsails/lspkind.nvim",         -- vs-code like pictograms
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
@@ -32,14 +36,16 @@ return {
 
       local luasnip = require("luasnip")
       local cmp = require("cmp")
+      local lspkind = require("lspkind")
       require("copilot_cmp").setup()
+      require("luasnip.loaders.from_vscode").lazy_load()
 
       opts = opts or {}
       opts.formatting = {
-        format = function(entry, vim_item)
-          vim_item.menu = entry.source.name
-          return vim_item
-        end,
+        format = lspkind.cmp_format({
+          maxwidth = 50,
+          ellipsis_char = "...",
+        }),
       }
       opts.sources = {
         { name = "copilot" },
@@ -55,6 +61,7 @@ return {
         { name = "calc" },
         { name = "dap" },
         { name = "treesitter" },
+        { name = "luasnip" },
       }
       opts.mapping = vim.tbl_extend("force", opts.mapping or {}, {
         ["<Up>"] = cmp.mapping.select_prev_item(),
