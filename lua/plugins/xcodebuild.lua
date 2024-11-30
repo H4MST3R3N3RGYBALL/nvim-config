@@ -17,6 +17,9 @@ return {
         pymobiledevice = {
           enabled = true,
         },
+        codelldb = {
+          enabled = true,
+        },
       }
     })
   end,
